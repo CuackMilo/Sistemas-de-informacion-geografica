@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+<script src=" https://unpkg.com/leaflet@1.6.0/dist/leaflet.js "></script>
+<link rel="stylesheet" href=" https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<style>
+#map{
+	width: 100%;
+	height: 600px;
+	box-shadow: 5px 5px 5px #888;
+}
+</style>
+</head>
+	<body>
+		<div id = 'map'>
+		</div>
+		<script>
+		var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+		+ 'contributors',
+		maxZoom: 18
+		});
+		
+		var map = L.map('map', {
+		center: [1.614433, -75.609455],
+		zoom: 16,
+		layers: osm,
+		scrollWheelZoom: false,
+		});
+		
+		var marker = L.marker([1.620330, -75.604312], {
+		draggable: false,
+		title: 'Presioname papi'
+		}).addTo(map)
+		.bindPopup('Universidad de la Amazonia');
+		
+				
+		var marker2 = L.marker([1.615053, -75.613808], {
+		draggable: false,
+		title: 'Presioname papi'
+		}).addTo(map)
+		.bindPopup('A l c a l d i a');
+		
+		var circle = L.circle([1.615053, -75.613808], 500, {
+		color: 'green',
+		fillColor: '#00ff5e',
+		fillOpacity: 0.2
+		}).addTo(map);
+		
+		var marker3 = L.marker([1.614922, -75.613264], {
+		draggable: false,
+		title: 'Presioname papi'
+		}).addTo(map)
+		.bindPopup('Parque Santander');
+		
+		var polygon = L.polygon([
+		[1.615391, -75.613041],
+		[1.614699, -75.612821],
+		[1.614517, -75.613494],
+		[1.615171, -75.613698]
+		]).addTo(map)
+		
+		var pointA = new L.LatLng(1.621877, -75.604298);
+		var pointB = new L.LatLng(1.619754, -75.602517);
+		var pointC = new L.LatLng(1.619781, -75.602023);
+		var pointD = new L.LatLng(1.619765, -75.601767);
+		var pointE = new L.LatLng(1.620167, -75.601590);
+		var pointF = new L.LatLng(1.620923, -75.601488);
+		var pointG = new L.LatLng(1.620977, -75.601960);
+		var latlngs = [pointA, pointB, pointC, pointD, pointE, pointF, pointG];
+		var polyline = L.polyline(
+		latlngs, {color: 'red'}
+		)
+		.addTo(map)
+		.bindPopup ('La linea');
+				
+		</script>
+	</body>
+</html>
